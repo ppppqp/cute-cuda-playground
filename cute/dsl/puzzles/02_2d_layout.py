@@ -95,6 +95,9 @@ def kernel(
     #
     # thread_slice fixes T=tid and retains all of V. Partial application turns
     # (T,V)->address into V->address.
+    # cute.repeat_like is so that we can deal with hierarchical value modes.
+    # for example, domain is (thread, (valueM, valueN)), then a complete slice is (tid, (None, None))
+    # so a robust slice would need cute.repeat_like(None, tv_a[1]), which uses the structural profile of mode 1 (value mode)
     thread_slice = (tid, cute.repeat_like(None, tv_a[1]))
 
     # Types/mappings owned by this CUDA thread:
