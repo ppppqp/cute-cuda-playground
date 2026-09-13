@@ -169,6 +169,7 @@ def launch(
     ).launch(
         # Grid follows the input: x dimension tiles columns, y tiles rows.
         grid=(cute.ceil_div(c, 32), cute.ceil_div(r, 32), 1),
+        # 256, 1, 1
         block=(cute.size(tv_layout, mode=[0]), 1, 1),
         stream=s,
     )
