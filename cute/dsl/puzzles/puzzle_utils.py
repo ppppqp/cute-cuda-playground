@@ -12,6 +12,7 @@ from cutlass.cute.runtime import make_ptr
 
 
 DTYPES = {
+    np.dtype(np.float16): cutlass.Float16,
     np.dtype(np.float32): cutlass.Float32,
     np.dtype(np.int8): cutlass.Int8,
 }
