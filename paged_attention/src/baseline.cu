@@ -79,7 +79,6 @@ namespace pa
       }
       // softmax across all tokens, store to the output
 
-
       std::size_t const out_index =
           (static_cast<std::size_t>(batch) * p.query_heads + q_head) * p.head_dim + d_out;
       out[out_index] = accumulator / running_sum;
