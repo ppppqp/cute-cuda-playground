@@ -74,6 +74,8 @@ __global__ void paged_attention_fused_kernel(Problem p, Inputs in, float *out) {
       // new factor is the incremental
       // prev_sum * old_max / new_max + increment / new_max
       running_sum = running_sum * old_factor + increment;
+      // NOTE THAT accumulator is different for each thread
+      // because v_d is different
       accumulator = accumulator * old_factor + increment * v_d;
       running_max = new_max;
     }
