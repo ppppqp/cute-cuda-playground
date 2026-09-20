@@ -1,6 +1,4 @@
-# 12-Week Study Plan: Gimlet Labs MTS — Compilers
-
-Target role: [Member of Technical Staff — Compilers, Gimlet Labs](https://jobs.ashbyhq.com/gimlet/ac6c4998-d6e7-429d-a889-930376bcc9f2)
+# 12-Week Study Plan: Compilers
 
 ## Goal
 
