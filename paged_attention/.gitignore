@@ -1,3 +1,6 @@
 /build/
 /profiles/*.ncu-rep
 /profiles/*.sqlite
+*.out
+*.ncu-repz
+*.csv

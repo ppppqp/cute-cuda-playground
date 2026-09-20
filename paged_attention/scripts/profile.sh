@@ -17,7 +17,7 @@ common=(
 
 if [[ "$profile_set" == "triage" ]]; then
   ncu --set basic "${common[@]}" \
-    "$build_dir/pa_benchmark" --case "$case_name" --kernel "$kernel_name" --iterations 1
+    "$build_dir/pa_benchmark" --case "$case_name" --kernel "$kernel_name" --iterations 1 --check
 elif [[ "$profile_set" == "memory" ]]; then
   ncu --section SpeedOfLight --section MemoryWorkloadAnalysis \
     --section Occupancy --section SchedulerStats --section WarpStateStats \
