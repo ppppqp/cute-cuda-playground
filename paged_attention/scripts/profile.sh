@@ -5,6 +5,7 @@ build_dir="${BUILD_DIR:-build}"
 case_name="${1:-tiny}"
 kernel_name="${2:-baseline}"
 profile_set="${3:-triage}"
+num_splits="${4:-8}"
 mkdir -p profiles
 
 common=(
@@ -17,7 +18,7 @@ common=(
 
 if [[ "$profile_set" == "triage" ]]; then
   ncu --set basic "${common[@]}" \
-    "$build_dir/pa_benchmark" --case "$case_name" --kernel "$kernel_name" --iterations 1 --check
+    "$build_dir/pa_benchmark" --case "$case_name" --kernel "$kernel_name" --iterations 1 --check --num-splits "$num_splits"
 elif [[ "$profile_set" == "memory" ]]; then
   ncu --section SpeedOfLight --section MemoryWorkloadAnalysis \
     --section Occupancy --section SchedulerStats --section WarpStateStats \

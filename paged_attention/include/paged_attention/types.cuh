@@ -27,14 +27,20 @@ struct Problem {
 };
 
 struct Inputs {
-  float const* query{};
-  float const* key_cache{};
-  float const* value_cache{};
-  int const* block_tables{};
-  int const* context_lengths{};
+  float const *query{};
+  float const *key_cache{};
+  float const *value_cache{};
+  int const *block_tables{};
+  int const *context_lengths{};
   float scale{};
 };
 
 enum class KernelKind { Baseline, FusedV1, VectorizedV2, GqaReuseV3, SplitKvV4 };
 
-}  // namespace pa
+struct SplitKvWorkspace {
+  float *partial_max;
+  float *partial_sum;
+  float *partial_output;
+  int num_splits;
+};
+} // namespace pa
