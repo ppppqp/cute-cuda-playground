@@ -38,10 +38,10 @@ __global__ void paged_attention_split_kernel(Problem p, Inputs in, float *global
   float4 accumulator = make_float4(0, 0, 0, 0);
 
   const int num_pages = (in.context_lengths[batch] + p.page_size - 1) / p.page_size;
-  const int num_pages_per_split = (num_pages + split - 1) / num_splits;
+  const int num_pages_per_split = (num_pages + num_splits - 1) / num_splits;
 
   for (int logical_page = num_pages_per_split * split;
-       logical_page < num_pages_per_split * (split + 1); ++logical_page) {
+       logical_page < min(num_pages_per_split * (split + 1), num_pages); ++logical_page) {
     const int physical_page = in.block_tables[batch * p.max_pages_per_sequence + logical_page];
     int valid_tokens = min(p.page_size, in.context_lengths[batch] - logical_page * p.page_size);
     for (int token = 0; token < valid_tokens; ++token) {
